@@ -19,10 +19,14 @@ Including another URLconf
 
 from django.urls import path
 
-from platzigram import views
+from platzigram import views as local_views
+from posts import views as posts_views
 
 urlpatterns = [
     #path('admin/', admin.site.urls),
-    path('helloworld/',views.hello_world),
-    path('myname/',views.miName),
+    path('helloworld/',local_views.hello_world),
+    path('sorted/',local_views.sort_integers),# /?numbers=3,7,13,56
+    path('hi/<str:name>/<int:age>',local_views.say_hi),
+
+    path('posts/',posts_views.list_posts)
 ]
